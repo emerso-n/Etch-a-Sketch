@@ -22,13 +22,16 @@ button{
   padding: .5em 0;
   background: #ebebeb;
   box-shadow: 2px 2px black;
+  transition: all 0.1s;
 }
 button:hover{
-  background: pink;
+  background: #ff91e3;
 }
-button:active{
+.active-button{
   box-shadow: 0px 0px black;
   transform: translate(2px, 2px);
+  background: #ff91e3;
+  transition: all 0.1s;
 }
 
 #settings_div{
@@ -97,14 +100,15 @@ input:checked + .slider:before {
   display: flex;
   gap: 1em;
 }
-#solid-color-draw-mode_btn{
+#SolidColor{
   flex: 1;
 }
 input[type="color"]{
   width: 40px;
-  height: 100%;
+  height: 40px;
   border: 2px solid black;
   border-radius: 5px;
+  transform: translateY(2px);
 }
 
 #grid-holder_div{
@@ -124,10 +128,10 @@ input[type="color"]{
   border-style: solid;
   border-width: 0px;
   background: white;
-  transition: all 1s;
+  transition: all .7s;
 }
 .grid:hover{
 /*   border-width: 1px; */
-  transform: scale(1.2);
+  transform: scale(1.1);
   transition: all 0.1s;
 }

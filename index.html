@@ -12,7 +12,7 @@
   <script>
     const stylesheet = document.styleSheets[1];
     console.log(stylesheet);
-    let gridHoverProperty = stylesheet.cssRules[stylesheet.cssRules.length - 1]
+    let gridHoverProperty = stylesheet.cssRules[stylesheet.cssRules.length - 1];
     console.log(gridHoverProperty);
   </script>
   <body>
@@ -21,17 +21,24 @@
         <div id="mode-switch_div">
           <span for="mode_switch">Hover Draw</span>
           <label class="switch">
-            <input type="checkbox" onchange="changeDrawingMode(this.checked)" />
+            <input
+              type="checkbox"
+              autocomplete="off"
+              onchange="changeDrawingMode(this.checked)"
+            />
             <span class="slider"></span>
           </label>
           <span for="mode_switch">Click Draw</span>
         </div>
         <div id="solid-color-options_div">
-          <button id="solid-color-draw-mode_btn">Solid Color</button>
-          <div id="color-picker_btn"><input type="color" /></div>
+          <button id="SolidColor" class="active-button">
+            Solid Color
+          </button>
+
+          <input type="color" value="#bc76ff" autocomplete="off" />
         </div>
-        <button id="gradient-draw-mode_btn">Rainbow</button>
-        <button id="eraser-mode_btn">Eraser</button>
+        <button id="Rainbow">Rainbow</button>
+        <button id="Erase">Eraser</button>
       </div>
 
       <div id="grid-holder_div"></div>
