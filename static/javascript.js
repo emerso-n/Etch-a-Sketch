@@ -37,11 +37,12 @@ createGrid(18)
 function changeDrawingMode(checked) {
     if (checked == false) {
         currentDrawingMode = DrawingMode.hover
-        gridHoverProperty.selectorText = ".grid:hover"
+        gridHoverProperty.style.setProperty("transform", "scale(1.2)")
+
     }
     else {
         currentDrawingMode = DrawingMode.click;
-        gridHoverProperty.selectorText = ".gridd:hover"
+        gridHoverProperty.style.setProperty("transform", "scale(1)")
     }
 }
 

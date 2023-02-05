@@ -112,7 +112,10 @@ input[type="color"]{
   height: 80vh;
   display: grid;
   gap: 1px;
-  box-shadow: 3px 3px black;
+  box-shadow: 4px 4px black;
+/*   background: pink; */
+  border: 3px solid black;
+  border-radius: 5px;
 /*   grid-template: repeat(16, 1fr) / repeat(16, 1fr); */
 }
 
