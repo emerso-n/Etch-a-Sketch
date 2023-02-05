@@ -5,7 +5,8 @@ console.log("js loaded")
 // console.log(stylesheet)
 // let gridHoverProperty = stylesheet.cssRules[-1].selectorText
 // console.log(gridHoverProperty)
-
+const array = [1, 2, 3, 4, 5]
+console.log(array.slice(-1))
 
 // const pageCon = document.getElementById("page_con")
 const gridHolder = document.getElementById("grid-holder_div")
@@ -36,11 +37,11 @@ createGrid(18)
 function changeDrawingMode(checked) {
     if (checked == false) {
         currentDrawingMode = DrawingMode.hover
-        gridHoverProperty= ".grid:hover"
+        gridHoverProperty.selectorText = ".grid:hover"
     }
     else {
         currentDrawingMode = DrawingMode.click;
-        gridHoverProperty = ".gridd:hover"
+        gridHoverProperty.selectorText = ".gridd:hover"
     }
 }
 
