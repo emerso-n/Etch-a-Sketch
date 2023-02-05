@@ -1,0 +1,130 @@
+:root{
+  --borderwidth: 2px;
+}
+#page_con{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background: linear-gradient(#3b75ff, #ff4bff);
+  font-family: "Quicksand", sansserif;
+  font-weight: bold;
+}
+
+button{
+  border: var(--borderwidth) solid black;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: "Quicksand", sansserif;
+/*   font-weight: bold; */
+  padding: .5em 0;
+  background: #ebebeb;
+  box-shadow: 2px 2px black;
+}
+button:hover{
+  background: pink;
+}
+button:active{
+  box-shadow: 0px 0px black;
+  transform: translate(2px, 2px);
+}
+
+#settings_div{
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1em;
+  background: white;
+  border: var(--borderwidth) solid black;
+  border-radius: 10px;
+  padding: 1.5em;
+  box-shadow: 3px 3px #0e0e0e;
+}
+
+#mode-switch_div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .35em;
+}
+.switch{
+  font-size: 20px;
+  position: relative;
+  width: 3em;
+  height: 1.5em;
+}
+.switch input{
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0 0 0 0;
+  background-color: #f94dff;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 2em;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1em;
+  width: 1em;
+  left: .3em;
+  bottom: 15%;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+  box-shadow: .1em 0px black;
+}
+input:checked + .slider {
+  background-color: #1FCAFF;
+}
+input:checked + .slider:before {
+  -webkit-transform: translateX(1.4em);
+  -ms-transform: translateX(1.4em);
+  transform: translateX(1.4em);
+  box-shadow: -.1em 0px black;
+  
+}
+#solid-color-options_div{
+  display: flex;
+  gap: 1em;
+}
+#solid-color-draw-mode_btn{
+  flex: 1;
+}
+input[type="color"]{
+  width: 40px;
+  height: 100%;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+#grid-holder_div{
+  width: 80vh;
+  height: 80vh;
+  display: grid;
+  gap: 1px;
+  box-shadow: 3px 3px black;
+/*   grid-template: repeat(16, 1fr) / repeat(16, 1fr); */
+}
+
+.grid{
+  border-color: white;
+  border-style: solid;
+  border-width: 0px;
+  background: white;
+  transition: all 1s;
+}
+.grid:hover{
+/*   border-width: 1px; */
+  transform: scale(1.2);
+  transition: all 0.1s;
+}

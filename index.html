@@ -1,15 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="static/javascript.js" defer></script>
-    <link rel="stylesheet" href="static/base.css">
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="static/base.css" />
+    <link rel="stylesheet" href="static/style.css" />
     <title>Etch-a-Sketch</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <script>
+    const stylesheet = document.styleSheets[1];
+    console.log(stylesheet);
+    let gridHoverProperty = stylesheet.cssRules[1].selectorText;
+    console.log(gridHoverProperty);
+  </script>
+  <body>
+    <div id="page_con">
+      <div id="settings_div">
+        <div id="mode-switch_div">
+          <span for="mode_switch">Hover Draw</span>
+          <label class="switch">
+            <input type="checkbox" onchange="changeDrawingMode(this.checked)" />
+            <span class="slider"></span>
+          </label>
+          <span for="mode_switch">Click Draw</span>
+        </div>
+        <div id="solid-color-options_div">
+          <button id="solid-color-draw-mode_btn">Solid Color</button>
+          <div id="color-picker_btn"><input type="color" /></div>
+        </div>
+        <button id="gradient-draw-mode_btn">Rainbow</button>
+        <button id="eraser-mode_btn">Eraser</button>
+      </div>
+
+      <div id="grid-holder_div"></div>
+    </div>
+  </body>
 </html>
