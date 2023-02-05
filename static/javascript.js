@@ -1,10 +1,10 @@
 console.log("js loaded")
 
 //get stylesheet property
-// const stylesheet = document.styleSheets[1]
-// console.log(stylesheet)
-// let gridHoverProperty = stylesheet.cssRules[1].selectorText
-// console.log(gridHoverProperty)
+const stylesheet = document.styleSheets[1]
+console.log(stylesheet)
+let gridHoverProperty = stylesheet.cssRules[-1].selectorText
+console.log(gridHoverProperty)
 
 
 // const pageCon = document.getElementById("page_con")
@@ -34,7 +34,14 @@ function createGrid(width) {
 createGrid(18)
 
 function changeDrawingMode(checked) {
-    checked == false ? currentDrawingMode = DrawingMode.hover : currentDrawingMode = DrawingMode.click;
+    if (checked == false) {
+        currentDrawingMode = DrawingMode.hover
+        gridHoverProperty.selectorText = ".grid:hover"
+    }
+    else {
+        currentDrawingMode = DrawingMode.click;
+        gridHoverProperty.selectorText = ".gridd:hover"
+    }
 }
 
 function createDiv(elementTag, className, parent) {
