@@ -17,28 +17,45 @@
   </script>
   <body>
     <div id="page_con">
-      <div id="settings_div">
-        <div id="mode-switch_div">
-          <span for="mode_switch">Hover Draw</span>
-          <label class="switch">
-            <input
-              type="checkbox"
-              autocomplete="off"
-              onchange="changeDrawingMode(this.checked)"
-            />
-            <span class="slider"></span>
-          </label>
-          <span for="mode_switch">Click Draw</span>
+      <div>
+        <h1>PIXL SKETCHR</h1>
+        <div id="settings_div">
+          <div id="mode-switch_div">
+            <span for="mode_switch">Hover Draw</span>
+            <label class="switch">
+              <input
+                type="checkbox"
+                autocomplete="off"
+                onchange="changeDrawingMode(this.checked)"
+              />
+              <span class="slider"></span>
+            </label>
+            <span for="mode_switch">Click Draw</span>
+          </div>
+  
+          <div id="settings-toggle_btns">
+            <div id="solid-color-options_div">
+              <button id="SolidColor" class="active-button">
+                Solid Color
+              </button>
+    
+              <input type="color" value="#bc76ff" autocomplete="off" />
+            </div>
+            <button id="Rainbow">Rainbow</button>
+            <button id="Shading">Shading</button>
+            <button id="Lighten">Lighten</button>
+            <button id="Erase">Eraser</button>
+          </div>
+  
+          <div id="click-btns">
+            <button id="ColorPicker">Color Picker</button>
+            <button id="ClearBtn">Clear</button>
+          </div>
+  
+          <div id="grid-slider_div">
+            <div id="grid-slider-text">test</div>
+            <input type="range" min="4" max="100" value="16" autocomplete="off" id="grid-slider"></div>
         </div>
-        <div id="solid-color-options_div">
-          <button id="SolidColor" class="active-button">
-            Solid Color
-          </button>
-
-          <input type="color" value="#bc76ff" autocomplete="off" />
-        </div>
-        <button id="Rainbow">Rainbow</button>
-        <button id="Erase">Eraser</button>
       </div>
 
       <div id="grid-holder_div"></div>
