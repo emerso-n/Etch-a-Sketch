@@ -21,16 +21,28 @@ footer{
 #page_con{
   width: 100vw;
   height: 100vh;
+  padding: 2em;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4rem;
-  background: linear-gradient(#3b75ff, #ff4bff);
+  gap: min(4em, 4%);
+  background-image: linear-gradient(45deg, #fff55b, #3b75ff, #c45aff, #fb6ffb, #c45aff, #3b75ff, #fff55b);
+  background-size: 400% 400%;
+  animation: gradient 60s alternate infinite;
   font-family: var(--Quicksand);
   font-weight: bold;
   cursor: default;
 }
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	100% {
+		background-position: 100% 50%;
+	}
+}
+
 #div_1{
   display: flex;
   align-items: center;
@@ -40,7 +52,7 @@ footer{
 
 h1{
   font-family: var(--PressStart);
-  font-size: 3rem;
+  font-size: clamp(1rem, 3.5vw, 3rem);
   text-align: center;
 /*   transform: scale(3); */
   margin-bottom: 1em;
@@ -50,7 +62,7 @@ h1{
 button{
   border: var(--borderwidth) solid black;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 1em;
   font-family: var(--Quicksand);
   padding: .5em 0;
   background: var(--grey);
@@ -75,6 +87,9 @@ button:hover, button:focus{
   align-items: stretch;
   justify-content: center;
   flex-direction: column;
+  
+  font-size: clamp(.5rem, 1.5vw, 1rem);
+ 
   gap: 1em;
   background: white;
   border: var(--borderwidth) solid black;
@@ -109,7 +124,7 @@ button:hover, button:focus{
   gap: .35em;
 }
 .switch{
-  font-size: 20px;
+  font-size: 1.3em;
   position: relative;
   width: 3em;
   height: 1.5em;
@@ -159,8 +174,8 @@ input:checked + .slider:before {
   flex: 1;
 }
 input[type="color"]{
-  width: 40px;
-  height: 40px;
+  width: 2.5em;
+  height: 2.5em;
   border: 2px solid black;
   border-radius: 5px;
   transform: translateY(2px);
@@ -168,13 +183,13 @@ input[type="color"]{
 
 #grid-slider_div{
   text-align: center;
-/*   background: red; */
 }
 input[type="range"]{
+  font-size: 1em;
   width: 98%;
   -webkit-appearance: none;
   appearance: none;
-  height: 10px;
+  height: .7em;
   background: var(--grey);
   border: 1px solid black;
   border-radius: 20px;
@@ -186,8 +201,8 @@ input[type="range"]:hover{
 input[type="range"]::-webkit-slider-thumb, input[type="range"]::-moz-range-thumb{
   -webkit-appearance: none; /* Override default look */
   appearance: none;
-  width: 21px; /* Set a specific slider handle width */
-  height: 21px; /* Slider handle height */
+  width: 1.8em; /* Set a specific slider handle width */
+  height: 1.8em; /* Slider handle height */
   background: var(--blue); /* Green background */
   cursor: pointer; /* Cursor on hover */
   border-radius: 100%;
@@ -196,11 +211,13 @@ input[type="range"]::-webkit-slider-thumb, input[type="range"]::-moz-range-thumb
 }
 
 #grid-slider-text{
-  margin-bottom: 4px;
+  margin-bottom: .35em;
 }
+
+
 #grid-holder_div{
-  width: 80vh;
-  height: 80vh;
+  min-width: min(80vh, 60vw);
+  height: min(80vh, 60vw);
   display: grid;
   gap: 1px;
   box-shadow: 4px 4px var(--boxshadowcolor);
@@ -210,9 +227,6 @@ input[type="range"]::-webkit-slider-thumb, input[type="range"]::-moz-range-thumb
 }
 
 .grid{
-  border-color: white;
-  border-style: solid;
-  border-width: 0px;
   background-color: white;
   transition: transform .7s, background .3s;
 }
