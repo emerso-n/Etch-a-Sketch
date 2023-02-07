@@ -3,9 +3,11 @@ console.log("js loaded")
 const pageCon = document.getElementById("page_con")
 const gridHolder = document.getElementById("grid-holder_div")
 
-const colorWheel = document.querySelector("input[type='color']");
-colorWheel.addEventListener("change", changeSolidColor)
-let currentSolidColor = colorWheel.value
+const colorWheels = document.querySelectorAll("input[type='color']");
+colorWheels[0].addEventListener("change", changeSolidColor);
+colorWheels[1].addEventListener("change", changeFillColor)
+let currentSolidColor = colorWheels[0].value;
+let currentFillColor = colorWheels[1].value;
 
 let currentColor = currentSolidColor
 
@@ -14,7 +16,7 @@ let currentDrawingMode = DrawingMode.hover;
 const settingsDiv = document.querySelector("#settings_div");
 const settingsBtns = document.querySelectorAll("#settings-toggle_btns button");
 let activeColorSettingsBtn = document.querySelector(".active-button");
-const ColorSetting = { SolidColor: "SolidColor", Rainbow: "Rainbow", Shading: "Shading", Lighten: "Lighten", Erase: "Erase" }
+const ColorSetting = { SolidColor: "SolidColor", CanvasFill: "CanvasFill", Rainbow: "Rainbow", Shading: "Shading", Lighten: "Lighten", Erase: "Erase" }
 let currentColorSetting = ColorSetting.SolidColor;
 settingsBtns.forEach(button => button.addEventListener('click', settingsBtnClick))
 
@@ -31,7 +33,11 @@ function settingsBtnClick(e) {
 
 function ChangeColorMode() {
     if (currentColorSetting == ColorSetting.SolidColor) {
-        currentColor = currentSolidColor;
+        currentColor = colorWheels[0].value;
+        return
+    }
+    if (currentColorSetting == ColorSetting.CanvasFill) {
+        currentColor = colorWheels[1].value;
         return
     }
     if (currentColorSetting == ColorSetting.Rainbow) {
@@ -40,11 +46,9 @@ function ChangeColorMode() {
         return
     }
     if (currentColorSetting == ColorSetting.Shading) {
-        currentColor = "white";
         return
     }
     if (currentColorSetting == ColorSetting.Lighten) {
-        currentColor = "white";
         return
     }
     if (currentColorSetting == ColorSetting.Erase) {
@@ -54,18 +58,17 @@ function ChangeColorMode() {
 }
 
 //grid creation functionality
-let n = 0
 let gridArray = []
+let mouseClicked = false
 function createGrid(width) {
     for (let i = 0; i < (width ** 2); i++) {
         let div = createDiv("div", "grid", gridHolder);
-        div.addEventListener('mouseenter', (e) => {
-            if (colorPickerActive == true) return
-            if (currentDrawingMode == DrawingMode.hover) {
-                e.target.style.background = currentColor;
-                if (currentColorSetting == ColorSetting.Rainbow) {
-                    currentColor = `hsl(${n <= 360 ? n += 2 : n = 0}, 100%, 63%)`;
-                }
+        div.set
+        div.addEventListener('mousemove', (e) => {
+            if (colorPickerActive == true || currentColorSetting == ColorSetting.CanvasFill) return
+
+            if (currentDrawingMode == DrawingMode.hover || mouseClicked == true) {
+                draw(e);
             };
         });
         div.addEventListener('click', (e) => {
@@ -73,10 +76,20 @@ function createGrid(width) {
                 pickColor(e.target.style.backgroundColor);
                 return;
             }
-            if (currentDrawingMode == DrawingMode.click) {
-                e.target.style.background = currentColor;
-            };
+            if (currentColorSetting == ColorSetting.CanvasFill) {
+                gridArray.forEach(grid => grid.style.backgroundColor = currentColor)
+                return
+            }
         });
+        div.addEventListener('mousedown', (e) => {
+            e.preventDefault()
+            if (currentDrawingMode == DrawingMode.click) {
+                draw(e);
+                mouseClicked = true;
+            };
+        })
+        div.addEventListener('mouseup', () => mouseClicked = false)
+        
         gridArray.push(div);
     }
     gridHolder.style.gridTemplate = `repeat(${width}, 1fr) / repeat(${width}, 1fr)`;
@@ -85,6 +98,52 @@ createGrid(16)
 
 function destroyGrid() {
     gridArray.forEach(grid => grid.remove())
+}
+
+//color mode functionality
+let n = 0
+function draw(e) {
+    if (currentColorSetting != ColorSetting.Shading && currentColorSetting != ColorSetting.Lighten) {
+        e.target.style.background = currentColor;
+    }
+
+    if (currentColorSetting == ColorSetting.Rainbow) {
+        currentColor = `hsl(${n <= 360 ? n += 2 : n = 0}, 100%, 63%)`;
+        return
+    }
+
+    if (currentColorSetting == ColorSetting.Shading) {
+        if (e.target.style.backgroundColor) {
+            rgb = rgbSplit(e.target.style.backgroundColor)
+        }
+        else {
+            rgb = [255, 255, 255]
+        }
+
+        let shade_factor = .1
+        let newRgb = [(+rgb[0] * (1 - shade_factor)), (+rgb[1] * (1 - shade_factor)), (+rgb[2] * (1 - shade_factor))]
+
+        e.target.style.backgroundColor = `rgb(${newRgb[0]}, ${newRgb[1]}, ${newRgb[2]})`
+        return
+    }
+
+    if (currentColorSetting == ColorSetting.Lighten) {
+        if (e.target.style.backgroundColor) {
+            rgb = rgbSplit(e.target.style.backgroundColor)
+        }
+        else {
+            // rgb = [255, 255, 255] //if its already white it cant be tinted
+            return
+        }
+
+        let tint_factor = .1
+        let newRgb = [
+            (+rgb[0] + (255 - +rgb[0]) * tint_factor),
+            (+rgb[1] + (255 - +rgb[1]) * tint_factor),
+            (+rgb[2] + (255 - +rgb[2]) * tint_factor)]
+
+        e.target.style.backgroundColor = `rgb(${newRgb[0]}, ${newRgb[1]}, ${newRgb[2]})`
+    }
 }
 
 //drawing mode change functionality
@@ -106,6 +165,14 @@ function changeSolidColor(e) {
     currentSolidColor = e.target.value;
     if (currentColorSetting == ColorSetting.SolidColor) {
         currentColor = currentSolidColor
+    }
+}
+
+//fill color functionality
+function changeFillColor(e) {
+    currentFillColor = e.target.value;
+    if (currentColorSetting == ColorSetting.CanvasFill) {
+        currentColor = currentFillColor
     }
 }
 
@@ -135,16 +202,26 @@ function pickColor(color) {
     if (!color) color = "#FFFFFF";
 
     else {
-        color = color.replace(/[^,\d]+/g, "")
-        let rgb = color.split(",");
+        rgb = rgbSplit(color);
         color = rgbToHex(+rgb[0], +rgb[1], +rgb[2]);
     }
 
-    currentSolidColor = color;
-    colorWheel.value = color;
     if (currentColorSetting == ColorSetting.SolidColor) currentColor = color;
+
+    if (currentColorSetting == ColorSetting.CanvasFill) {
+        colorWheels[1].value = color;
+        currentColor = color;
+    }
+    else {
+        currentSolidColor = color;
+        colorWheels[0].value = color;
+        settingsBtns[0].click()
+    }
     cancelColorPicker()
-    settingsBtns[0].click()
+}
+function rgbSplit(rgbString) {
+    rgbString = rgbString.replace(/[^,\d]+/g, "");
+    return rgbString.split(",");
 }
 function rgbToHex(r, g, b) {
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);

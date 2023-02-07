@@ -7,7 +7,7 @@
     <script src="static/javascript.js" defer></script>
     <link rel="stylesheet" href="static/base.css" />
     <link rel="stylesheet" href="static/style.css" />
-    <title>Etch-a-Sketch</title>
+    <title>PIXEL SKETCHR</title>
   </head>
   <script>
     const stylesheet = document.styleSheets[1];
@@ -17,8 +17,8 @@
   </script>
   <body>
     <div id="page_con">
-      <div>
-        <h1>PIXL SKETCHR</h1>
+      <div id="div_1">
+        <h1>PIXEL SKETCHR</h1>
         <div id="settings_div">
           <div id="mode-switch_div">
             <span for="mode_switch">Hover Draw</span>
@@ -34,16 +34,23 @@
           </div>
   
           <div id="settings-toggle_btns">
-            <div id="solid-color-options_div">
-              <button id="SolidColor" class="active-button">
+            <div id="solid-color-options_div" class="color-wheel_div">
+              <button id="SolidColor" class="color-wheel_btn active-button">
                 Solid Color
               </button>
-    
               <input type="color" value="#bc76ff" autocomplete="off" />
             </div>
+
+            <div id="canvas-fill-options_div" class="color-wheel_div">
+              <button id="CanvasFill" class="color-wheel_btn">
+                Canvas Fill
+              </button>
+              <input type="color" value="#bc76ff" autocomplete="off" />
+            </div>
+
             <button id="Rainbow">Rainbow</button>
-            <button id="Shading">Shading</button>
-            <button id="Lighten">Lighten</button>
+            <button id="Shading">Shade</button>
+            <button id="Lighten">Tint</button>
             <button id="Erase">Eraser</button>
           </div>
   
@@ -60,5 +67,6 @@
 
       <div id="grid-holder_div"></div>
     </div>
+    <footer>A Website by Emerson (2023)</footer>
   </body>
 </html>

@@ -7,25 +7,41 @@
   --brightblue: #1FCAFF;
   --boxshadowcolor: #0e0e0e;
 }
+footer{
+  position: fixed;
+  bottom: 0;
+/*   background: white; */
+  width: 100%;
+  font-family: "Quicksand", sansserif;
+  text-align: center;
+  padding: .5em .5em;
+}
 #page_con{
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 4rem;
   background: linear-gradient(#3b75ff, #ff4bff);
   font-family: "Quicksand", sansserif;
   font-weight: bold;
   cursor: default;
 }
+#div_1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 
 h1{
   font-family: 'press start';
-  font-size: 1rem;
+  font-size: 3rem;
   text-align: center;
-  transform: scale(3);
-  margin-bottom: 3em;
+/*   transform: scale(3); */
+  margin-bottom: 1em;
   color: white;
   text-shadow: 2px 2px black;
 }
@@ -41,7 +57,7 @@ button{
   transition: all 0.1s;
 /*   cursor: pointer; */
 }
-button:hover{
+button:hover, button:focus{
   background: var(--pink);
 }
 .active-button, #click-btns button:active{
@@ -52,6 +68,8 @@ button:hover{
 }
 
 #settings_div{
+  width: min-content;
+  white-space: nowrap;
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -132,11 +150,11 @@ input:checked + .slider:before {
   box-shadow: -.1em 0px var(--boxshadowcolor);
   
 }
-#solid-color-options_div{
+.color-wheel_div{
   display: flex;
   gap: 1em;
 }
-#SolidColor{
+.color-wheel_btn{
   flex: 1;
 }
 input[type="color"]{
@@ -180,8 +198,8 @@ input[type="range"]::-webkit-slider-thumb, input[type="range"]::-moz-range-thumb
   margin-bottom: 4px;
 }
 #grid-holder_div{
-  width: 80vh;
-  height: 80vh;
+  width: 960px;
+  height: 960px;
   display: grid;
   gap: 1px;
   box-shadow: 4px 4px var(--boxshadowcolor);
@@ -194,10 +212,10 @@ input[type="range"]::-webkit-slider-thumb, input[type="range"]::-moz-range-thumb
   border-color: white;
   border-style: solid;
   border-width: 0px;
-  background: white;
+  background-color: white;
   transition: transform .7s, background .3s;
 }
-.grid:hover{
+.grid:hover{ /*this has to stay on the bottom */
   transform: scale(1.1);
   transition: transform 0.1s, background 0s;
 }
