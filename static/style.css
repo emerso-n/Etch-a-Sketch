@@ -6,15 +6,17 @@
   --brightpink: #f94dff;
   --brightblue: #1FCAFF;
   --boxshadowcolor: #0e0e0e;
+  --PressStart: 'Press Start 2P', cursive;
+  --Quicksand:  'Quicksand', sans-serif;
 }
 footer{
   position: fixed;
   bottom: 0;
 /*   background: white; */
   width: 100%;
-  font-family: "Quicksand", sansserif;
+  font-weight: normal;
   text-align: center;
-  padding: .5em .5em;
+  padding: 0 .5em .5em;
 }
 #page_con{
   width: 100vw;
@@ -25,7 +27,7 @@ footer{
   justify-content: center;
   gap: 4rem;
   background: linear-gradient(#3b75ff, #ff4bff);
-  font-family: "Quicksand", sansserif;
+  font-family: var(--Quicksand);
   font-weight: bold;
   cursor: default;
 }
@@ -37,7 +39,7 @@ footer{
 }
 
 h1{
-  font-family: 'press start';
+  font-family: var(--PressStart);
   font-size: 3rem;
   text-align: center;
 /*   transform: scale(3); */
@@ -49,8 +51,7 @@ button{
   border: var(--borderwidth) solid black;
   border-radius: 5px;
   font-size: 1rem;
-  font-family: "Quicksand", sansserif;
-/*   font-weight: bold; */
+  font-family: var(--Quicksand);
   padding: .5em 0;
   background: var(--grey);
   box-shadow: 2px 2px var(--boxshadowcolor);
@@ -198,8 +199,8 @@ input[type="range"]::-webkit-slider-thumb, input[type="range"]::-moz-range-thumb
   margin-bottom: 4px;
 }
 #grid-holder_div{
-  width: 960px;
-  height: 960px;
+  width: 80vh;
+  height: 80vh;
   display: grid;
   gap: 1px;
   box-shadow: 4px 4px var(--boxshadowcolor);
