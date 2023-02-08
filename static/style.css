@@ -11,9 +11,8 @@
 }
 
 footer{
-/*   position: fixed; */
-/*   bottom: 0; */
-/*   background: white; */
+  position: fixed;
+  bottom: 0;
   width: 100%;
   font-weight: normal;
   text-align: center;
