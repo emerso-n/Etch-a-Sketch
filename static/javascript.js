@@ -88,7 +88,7 @@ function createGrid(width) {
                 mouseClicked = true;
             };
         })
-        div.addEventListener('mouseup', () => mouseClicked = false)
+        pageCon.addEventListener('mouseup', () => mouseClicked = false)
         
         gridArray.push(div);
     }
