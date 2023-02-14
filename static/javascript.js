@@ -88,12 +88,12 @@ function createGrid(width) {
                 mouseClicked = true;
             };
         })
-        pageCon.addEventListener('mouseup', () => mouseClicked = false)
         
         gridArray.push(div);
     }
     gridHolder.style.gridTemplate = `repeat(${width}, 1fr) / repeat(${width}, 1fr)`;
 }
+pageCon.addEventListener('mouseup', () => mouseClicked = false)
 createGrid(16)
 
 function destroyGrid() {
