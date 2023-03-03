@@ -237,7 +237,6 @@ input[type="range"]::-webkit-slider-thumb, input[type="range"]::-moz-range-thumb
   min-height: 70vw;
 }
 }
-
 .grid{
   background-color: white;
   transition: transform .7s, background .3s;

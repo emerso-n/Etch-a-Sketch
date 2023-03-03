@@ -20,6 +20,10 @@ const ColorSetting = { SolidColor: "SolidColor", CanvasFill: "CanvasFill", Rainb
 let currentColorSetting = ColorSetting.SolidColor;
 settingsBtns.forEach(button => button.addEventListener('click', settingsBtnClick))
 
+// var style = document.createElement('style');
+// style.type = 'text/css';
+// style.innerHTML = '.temp-color { background-color: #f00 !important; }';
+// document.getElementsByTagName('head')[0].appendChild(style);
 
 //color mode change functionality
 function settingsBtnClick(e) {
@@ -63,14 +67,24 @@ let mouseClicked = false
 function createGrid(width) {
     for (let i = 0; i < (width ** 2); i++) {
         let div = createDiv("div", "grid", gridHolder);
-        div.set
+        
         div.addEventListener('mousemove', (e) => {
             if (colorPickerActive == true || currentColorSetting == ColorSetting.CanvasFill) return
 
             if (currentDrawingMode == DrawingMode.hover || mouseClicked == true) {
                 draw(e);
             };
-        });
+        //     if (currentDrawingMode == DrawingMode.click) {
+        //         style.innerHTML = `.temp-color { background-color: ${currentColor} !important; }`;
+        //         // document.getElementsByTagName('head')[0].appendChild(style);
+        //         e.target.classList.add("temp-color")
+        //     }
+        // });
+        // div.addEventListener('mouseleave', (e) => {
+        //     if (currentDrawingMode == DrawingMode.click) {
+        //         e.target.classList.remove("temp-color")
+        //     }
+        })
         div.addEventListener('click', (e) => {
             if (colorPickerActive == true) {
                 pickColor(e.target.style.backgroundColor);
